@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Documentation">
+      <UniqueIdentifier>{c091668e-db50-4b20-86cb-b7c529987fcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="github">
+      <UniqueIdentifier>{6971d057-a2af-49d6-b443-d2c17acdb996}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Output">
+      <UniqueIdentifier>{939f25c4-1e8e-4dfa-8e1c-d41a8c314931}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{28c2df49-45a5-4775-a9c6-3b6ac771a5d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input\Shaders">
+      <UniqueIdentifier>{1dbea601-e122-47e7-9ae8-694b7e1f25c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Camera">
+      <UniqueIdentifier>{7558bd41-b75c-4f5c-bf91-2d1d1b87e7d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Camera">
+      <UniqueIdentifier>{0abc9faf-ad29-491a-a21b-1401474f7973}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Common">
+      <UniqueIdentifier>{7bcf1f4e-a8cf-48ed-a7ac-2c8bbf9cd782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Common">
+      <UniqueIdentifier>{bbd6e451-6f87-4afc-bd03-e528dd471f1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entity">
+      <UniqueIdentifier>{4cd56f3b-5dbd-43c5-980c-55282db5aef9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity">
+      <UniqueIdentifier>{5d1ab435-cbb7-476d-8bab-30e93b99f0f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Light">
+      <UniqueIdentifier>{8eb28a28-a08e-47ca-95cd-f004290d0462}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Light">
+      <UniqueIdentifier>{7836c7ba-2412-42aa-b68f-dcb03a37b69c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Motion">
+      <UniqueIdentifier>{9e4234cb-e0a6-47a8-a341-5481bd63b92d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Motion">
+      <UniqueIdentifier>{d19f018f-c51f-451a-a60d-8837e5b6f837}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Screen">
+      <UniqueIdentifier>{607dd238-2360-4dcd-98bd-16401d825d91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Screen">
+      <UniqueIdentifier>{6727a144-e722-402d-bcba-21724a6b71d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shader">
+      <UniqueIdentifier>{626348b3-e095-41af-b1fa-7ec7f61f0551}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shader">
+      <UniqueIdentifier>{bf9a3943-5cc6-43d0-b549-8f6d53f94ab6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera/Camera.cpp">
+      <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera/FrameRate.cpp">
+      <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera/VideoStreamer.cpp">
+      <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Common/Utility.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity/Entity.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity/EntityManager.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity/Material.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity/Mesh.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity/Model.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity/Texture.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Light/DirectionalLight.cpp">
+      <Filter>Source Files\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Light/Light.cpp">
+      <Filter>Source Files\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Light/LightManager.cpp">
+      <Filter>Source Files\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Light/PointLight.cpp">
+      <Filter>Source Files\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Light/SpotLight.cpp">
+      <Filter>Source Files\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="Motion/Motion.cpp">
+      <Filter>Source Files\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="Motion/MotionCurve.cpp">
+      <Filter>Source Files\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="Motion/MotionCurveFlyer.cpp">
+      <Filter>Source Files\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="Motion/MotionPlan.cpp">
+      <Filter>Source Files\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="Motion/MotionSegment.cpp">
+      <Filter>Source Files\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="Motion/quaternion_utils.cpp">
+      <Filter>Source Files\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="Screen/Screen.cpp">
+      <Filter>Source Files\Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader/Shader.cpp">
+      <Filter>Source Files\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader/ShaderManager.cpp">
+      <Filter>Source Files\Shader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Filter>Documentation</Filter>
+    </None>
+    <None Include="..\.gitignore">
+      <Filter>github</Filter>
+    </None>
+    <None Include="..\input\shaders\shader.frag">
+      <Filter>Input\Shaders</Filter>
+    </None>
+    <None Include="..\input\shaders\shader.vert">
+      <Filter>Input\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Camera/Camera.h">
+      <Filter>Header Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera/FrameRate.h">
+      <Filter>Header Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera/VideoStreamer.h">
+      <Filter>Header Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Common/Constants.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common/Utility.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity/Entity.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity/EntityManager.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity/Material.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity/Mesh.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity/Model.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity/stb_image.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity/Texture.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Light/DirectionalLight.h">
+      <Filter>Header Files\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Light/Light.h">
+      <Filter>Header Files\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Light/LightManager.h">
+      <Filter>Header Files\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Light/PointLight.h">
+      <Filter>Header Files\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Light/SpotLight.h">
+      <Filter>Header Files\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Motion/Motion.h">
+      <Filter>Header Files\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="Motion/MotionCurve.h">
+      <Filter>Header Files\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="Motion/MotionCurveFlyer.h">
+      <Filter>Header Files\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="Motion/MotionPlan.h">
+      <Filter>Header Files\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="Motion/MotionSegment.h">
+      <Filter>Header Files\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="Motion/quaternion_utils.hpp">
+      <Filter>Header Files\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="Screen/Screen.h">
+      <Filter>Header Files\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader/Shader.h">
+      <Filter>Header Files\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader/ShaderManager.h">
+      <Filter>Header Files\Shader</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\output\output.mp4">
+      <Filter>Output</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\output\output.txt">
+      <Filter>Output</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
