@@ -8,7 +8,7 @@ The scene is derived from [scene #2](https://github.com/TallDave67/flight_sim_3p
 
 The code has been re-organized into appropriate sub-folders as the overall size of the project is growing.
 
-An x-wing fighter flies along a closed curve and males smoot turns as it circles a rotating satellite above a spherical (mostly) moon.
+An x-wing fighter flies along a closed curve and makes smooth turns as it circles a rotating satellite above a spherical (mostly) moon.
 
 Various lights accentuate the drama of the scene.
 
