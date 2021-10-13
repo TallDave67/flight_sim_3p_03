@@ -32,6 +32,13 @@ static const char* PATH_SHADERS = "shaders/";
 static const char* MODEL_EXTENSION = ".obj";
 static const char* TEXTURE_DEFAULT = "plain.png";
 
+// Entities
+static const int ENTITY_FLYER_1 = 0;
+static const int ENTITY_FLYER_2 = 1;
+static const int ENTITY_FLOATER_1 = 2;
+static const int ENTITY_PLANET = 3;
+static const int ENTITY_SPACE = 4;
+
 // Motion
 static const int AXIS_NONE = 0x00000000;
 static const int AXIS_X = 0x00000001;
@@ -62,5 +69,5 @@ static const float CAMERA_TRANSLATION_INCREMENT = 3.2f * TRANSLATION_INCREMENT;
 static const float CAMERA_ROTATION_INCREMENT = 0.4f * ROTATION_INCREMENT;
 
 // Lighting
-static const unsigned int MAX_POINT_LIGHTS = 3;
+static const unsigned int MAX_POINT_LIGHTS = 6;
 static const unsigned int MAX_SPOT_LIGHTS = 3;

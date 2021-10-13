@@ -109,6 +109,87 @@ void EntityManager::initialize()
         }
     }
 
+    // *** Flyer2
+    std::shared_ptr<Entity> flyer2_entity = addEntity();
+    if (flyer2_entity)
+    {
+        flyer2_entity->initialize(shinyMaterial);
+        //
+        std::string flyer2_data = std::string("Transport_Shuttle_obj");
+        std::shared_ptr<Model> flyer2_model = flyer2_entity->getModel();
+        if (flyer2_model)
+        {
+            flyer2_model->initialize(flyer2_data.c_str());
+            flyer2_model->LoadModel();
+        }
+        //
+        std::shared_ptr<MotionPlan> flyer2MotionPlan = flyer2_entity->getMotionPlan();
+        if (flyer2MotionPlan)
+        {
+            flyer2MotionPlan->initialize(MOTION_PLAN_TYPE_INFINITE);
+            std::shared_ptr<Motion> motion = flyer2MotionPlan->get_motion();
+            if (motion)
+            {
+                motion->set_starting_orientation(glm::vec3(-1.0f, 0.0f, 0.0f));
+            }
+            //
+            std::shared_ptr<MotionSegment> motionStart = flyer2MotionPlan->add_segment();
+            if (motionStart)
+            {
+                if (motionStart->initialize())
+                {
+                    motionStart->get_translation()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
+                        -3.0f, 11.0f, -28.3333f,
+                        0.0f,  0.0f, 0.0f
+                    );
+                    motionStart->get_rotation()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
+                        35.0f, 35.0f, 0.0f,
+                        0.0f,  0.0f, 0.0f
+                    );
+                    motionStart->get_scaling()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
+                        0.2f, 0.0f, 0.0f,
+                        0.0f, 0.0f, 0.0f
+                    );
+                    motionStart->set_num_frames(1);
+                }
+            }
+            //
+            std::shared_ptr<MotionSegment> motionFly = flyer2MotionPlan->add_segment();
+            if (motionFly)
+            {
+                if (motionFly->initialize())
+                {
+                    motionFly->get_translation()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_FINTE, MOTION_CHANGE_CAUSE_FUNCTION,
+                        0.0f, 0.0f, 0.0f,
+                        0.5f, 0.0f, DEGREES_IN_CIRCLE
+                    );
+                    motionFly->get_translation()->set_motion_function(
+                        [](float t)
+                        {
+                            float radius = 4.0f;
+                            float x = radius * sinf(glm::radians(t)) - 3.0f;
+                            float y = radius * cosf(glm::radians(t)) + 7.0f;
+                            float z = static_cast<float>(pow(x, 2)) + static_cast<float>(pow(y, 2)) - 42.0f;
+                            return glm::vec3(x, y, z);
+                        }
+                    );
+                    //
+                    motionFly->get_rotation()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_FINTE, MOTION_CHANGE_CAUSE_TRANSLATION,
+                        0.0f, 0.0f, 0.0f,
+                        0.0f, 0.0f, 0.0f
+                    );
+                    //
+                    motionFly->set_duration(15.0f);
+                }
+            }
+        }
+    }
+
     // *** Floater
     std::shared_ptr<Entity> floater_entity = addEntity();
     if (floater_entity)
@@ -205,6 +286,46 @@ void EntityManager::initialize()
             }
         }
     }
+
+    // *** Space
+    std::shared_ptr<Entity> space_entity = addEntity();
+    if (space_entity)
+    {
+        space_entity->initialize(dullMaterial);
+        //
+        std::string space_data = std::string("Space");
+        std::shared_ptr<Model> space_model = space_entity->getModel();
+        if (space_model)
+        {
+            space_model->initialize(space_data.c_str());
+            space_model->LoadModel();
+        }
+        //
+        std::shared_ptr<MotionPlan> spaceMotionPlan = space_entity->getMotionPlan();
+        if (spaceMotionPlan)
+        {
+            spaceMotionPlan->initialize(MOTION_PLAN_TYPE_FINITE);
+            std::shared_ptr<MotionSegment> motionStart = spaceMotionPlan->add_segment();
+            if (motionStart)
+            {
+                if (motionStart->initialize())
+                {
+                    motionStart->get_translation()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
+                        0.0f, 0.0f, 0.0f,
+                        0.0f, 0.0f, 0.0f
+                    );
+                    motionStart->get_scaling()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
+                        16.0f, 0.0f, 0.0f,
+                        0.0f, 0.0f, 0.0f
+                    );
+                    motionStart->set_num_frames(1);
+                }
+            }
+        }
+    }
+
 }
 
 void EntityManager::moveEntities()
