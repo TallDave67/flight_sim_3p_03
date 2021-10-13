@@ -92,7 +92,7 @@ void EntityManager::initialize()
                             float radius = 6.0f;
                             float y = radius * sinf(glm::radians(t)) + 2.0f;
                             float z = radius * cosf(glm::radians(t));
-                            float x = static_cast<float>(pow(y, 2)) + static_cast<float>(pow(z, 2)) - 36.0f;
+                            float x = static_cast<float>(pow(y, 2)) + static_cast<float>(pow(z, 2)) - 42.0f;
                             return glm::vec3(x, y, z);
                         }
                     );
@@ -172,8 +172,8 @@ void EntityManager::initialize()
                         {
                             float radius = 4.0f;
                             float x = radius * sinf(glm::radians(t)) - 3.0f;
-                            float y = radius * cosf(glm::radians(t)) + 7.0f;
-                            float z = static_cast<float>(pow(x, 2)) + static_cast<float>(pow(y, 2)) - 42.0f;
+                            float y = radius * cosf(glm::radians(t)) + 6.0f;
+                            float z = static_cast<float>(pow(x, 2)) + static_cast<float>(pow(abs(y) - 2, 2)) - 46.0f;
                             return glm::vec3(x, y, z);
                         }
                     );
@@ -312,12 +312,12 @@ void EntityManager::initialize()
                 {
                     motionStart->get_translation()->set_change(
                         MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
-                        0.0f, 0.0f, 0.0f,
+                        0.0f, 0.0f, 2.0f,
                         0.0f, 0.0f, 0.0f
                     );
                     motionStart->get_scaling()->set_change(
                         MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
-                        16.0f, 0.0f, 0.0f,
+                        17.0f, 0.0f, 0.0f,
                         0.0f, 0.0f, 0.0f
                     );
                     motionStart->set_num_frames(1);

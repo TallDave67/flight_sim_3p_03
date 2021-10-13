@@ -21,7 +21,7 @@ void Texture::initialize(const char* _fileLocation)
 bool Texture::LoadTexture(GLenum format)
 {
     // load the image data
-    printf("loading texture %s\n", fileLocation.c_str());
+    //printf("loading texture %s\n", fileLocation.c_str());
     stbi_set_flip_vertically_on_load(true); 
     unsigned char* texData = stbi_load(fileLocation.c_str(), &width, &height, &bitDepth, 0);
     if (!texData)
