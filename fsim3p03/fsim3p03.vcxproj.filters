@@ -123,12 +123,6 @@
     <ClCompile Include="Motion/Motion.cpp">
       <Filter>Source Files\Motion</Filter>
     </ClCompile>
-    <ClCompile Include="Motion/MotionCurve.cpp">
-      <Filter>Source Files\Motion</Filter>
-    </ClCompile>
-    <ClCompile Include="Motion/MotionCurveFlyer.cpp">
-      <Filter>Source Files\Motion</Filter>
-    </ClCompile>
     <ClCompile Include="Motion/MotionPlan.cpp">
       <Filter>Source Files\Motion</Filter>
     </ClCompile>
@@ -146,6 +140,9 @@
     </ClCompile>
     <ClCompile Include="Shader/ShaderManager.cpp">
       <Filter>Source Files\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Motion\MotionChange.cpp">
+      <Filter>Source Files\Motion</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -217,12 +214,6 @@
     <ClInclude Include="Motion/Motion.h">
       <Filter>Header Files\Motion</Filter>
     </ClInclude>
-    <ClInclude Include="Motion/MotionCurve.h">
-      <Filter>Header Files\Motion</Filter>
-    </ClInclude>
-    <ClInclude Include="Motion/MotionCurveFlyer.h">
-      <Filter>Header Files\Motion</Filter>
-    </ClInclude>
     <ClInclude Include="Motion/MotionPlan.h">
       <Filter>Header Files\Motion</Filter>
     </ClInclude>
@@ -240,6 +231,9 @@
     </ClInclude>
     <ClInclude Include="Shader/ShaderManager.h">
       <Filter>Header Files\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Motion\MotionChange.h">
+      <Filter>Header Files\Motion</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

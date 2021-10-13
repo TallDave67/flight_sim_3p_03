@@ -1,43 +1,39 @@
 #pragma once
+#include<memory>
 
 #include <glm/glm.hpp>
+
+#include "Motion.h"
+#include "MotionChange.h"
 
 class MotionSegment
 {
 public:
     friend class MotionPlan;
 
-    MotionSegment(
-        unsigned int _num_frames, unsigned int _current_frame,
-        bool _translate, int _direction_x, int _direction_y, int _direction_z,
-        bool _rotate, int _direction_rotate_x, int _direction_rotate_y, int _direction_rotate_z,
-        bool _scale, int _direction_scale
-    );
+    MotionSegment();
     ~MotionSegment();
 
+    bool initialize();
+        
+    std::shared_ptr<MotionChange> get_translation();
+    std::shared_ptr<MotionChange> get_rotation();
+    std::shared_ptr<MotionChange> get_scaling();
+
+    bool set_duration(float _duration);
+    bool set_num_frames(unsigned int _num_frames);
+    unsigned int get_num_frames();
+
     unsigned int reset();
-    bool next();
-    void execute();
+    bool next(std::shared_ptr<Motion> motion);
 
 private:
+    // The 3 forms of motion
+    std::shared_ptr<MotionChange> translation;
+    std::shared_ptr<MotionChange> rotation;
+    std::shared_ptr<MotionChange> scaling;
+
     // Duration
-    unsigned int num_frames;
-    unsigned int current_frame;
-
-    // Translation
-    bool translate;
-    int direction_x;
-    int direction_y;
-    int direction_z;
-
-    // Rotation
-    bool rotate;
-    int direction_rotate_x;
-    int direction_rotate_y;
-    int direction_rotate_z;
-
-    // Scaling
-    bool scale;
-    int direction_scale;
+    float duration;
 };
 

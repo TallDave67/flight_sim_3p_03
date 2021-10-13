@@ -3,7 +3,7 @@
 #include "Constants.h"
 
 Screen::Screen() :
-    win(nullptr), width(SCREEN_WIDTH), height(SCREEN_HEIGHT), bufferWidth(0), bufferHeight(0), keys(GLFW_KEY_LAST+1, false)
+    win(nullptr), width(0), height(0), bufferWidth(0), bufferHeight(0), keys(GLFW_KEY_LAST+1, false)
 {
 }
 

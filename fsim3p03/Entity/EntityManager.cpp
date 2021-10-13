@@ -2,18 +2,9 @@
 
 #include "Constants.h"
 #include "MotionSegment.h"
-#include "MotionCurveFlyer.h"
+#include "MotionChange.h"
 
 // Motion
-std::vector<MotionCurve*> flyerMotionCurves;
-std::vector<MotionSegment> floaterMotionSegments{
-    {   0, 0,
-        false, DIRECTION_NONE, DIRECTION_NONE, DIRECTION_NONE,
-        true, DIRECTION_NEGATIVE, DIRECTION_POSITIVE, DIRECTION_NONE,
-        false, DIRECTION_NONE
-    }
-};
-
 EntityManager::EntityManager()
 {
 
@@ -21,12 +12,6 @@ EntityManager::EntityManager()
 
 EntityManager::~EntityManager()
 {
-    std::vector<MotionCurve*>::iterator itr_curve = flyerMotionCurves.begin();
-    for (; itr_curve != flyerMotionCurves.end(); itr_curve++)
-    {
-        delete (*itr_curve);
-        *itr_curve = nullptr;
-    }
 }
 
 void EntityManager::initialize()
@@ -57,17 +42,70 @@ void EntityManager::initialize()
             flyer_model->LoadModel();
         }
         //
-        MotionCurveFlyer* motionCurveFlyer = new MotionCurveFlyer();
-        flyerMotionCurves.push_back(motionCurveFlyer);
-        //
         std::shared_ptr<MotionPlan> flyerMotionPlan = flyer_entity->getMotionPlan();
         if (flyerMotionPlan)
         {
-            flyerMotionPlan->initialize(
-                25.0f, 1.0f, -20.0f,
-                0.0f, 55.0f, -10.0f, 0.2f,
-                0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 1.0f,
-                MOTION_PLAN_TYPE_REPEAT, nullptr, &flyerMotionCurves);
+            flyerMotionPlan->initialize(MOTION_PLAN_TYPE_INFINITE);
+            std::shared_ptr<Motion> motion = flyerMotionPlan->get_motion();
+            if (motion)
+            {
+                motion->set_starting_orientation(glm::vec3(-1.0f, 0.0f, 0.0f));
+            }
+            //
+            std::shared_ptr<MotionSegment> motionStart = flyerMotionPlan->add_segment();
+            if (motionStart)
+            {
+                if (motionStart->initialize())
+                {
+                    motionStart->get_translation()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
+                        28.0f, 8.0f, 0.0f,
+                        0.0f,  0.0f, 0.0f
+                    );
+                    motionStart->get_rotation()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
+                        0.0f, 55.0f, -10.0f,
+                        0.0f,  0.0f, 0.0f
+                    );
+                    motionStart->get_scaling()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
+                        0.2f, 0.0f, 0.0f,
+                        0.0f, 0.0f, 0.0f
+                    );
+                    motionStart->set_num_frames(1);
+                }
+            }
+            //
+            std::shared_ptr<MotionSegment> motionFly = flyerMotionPlan->add_segment();
+            if (motionFly)
+            {
+                if (motionFly->initialize())
+                {
+                    motionFly->get_translation()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_FINTE, MOTION_CHANGE_CAUSE_FUNCTION,
+                        0.0f, 0.0f, 0.0f,
+                        0.5f, DEGREES_IN_QUARTER_CIRCLE, DEGREES_IN_CIRCLE + DEGREES_IN_QUARTER_CIRCLE
+                    );
+                    motionFly->get_translation()->set_motion_function(
+                        [](float t)
+                        {
+                            float radius = 6.0f;
+                            float y = radius * sinf(glm::radians(t)) + 2.0f;
+                            float z = radius * cosf(glm::radians(t));
+                            float x = static_cast<float>(pow(y, 2)) + static_cast<float>(pow(z, 2)) - 36.0f;
+                            return glm::vec3(x, y, z);
+                        }
+                    );
+                    //
+                    motionFly->get_rotation()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_FINTE, MOTION_CHANGE_CAUSE_TRANSLATION,
+                        0.0f, 0.0f, 0.0f,
+                        0.0f, 0.0f, 0.0f
+                    );
+                    //
+                    motionFly->set_duration(12.0f);
+                }
+            }
         }
     }
 
@@ -88,11 +126,44 @@ void EntityManager::initialize()
         std::shared_ptr<MotionPlan> floaterMotionPlan = floater_entity->getMotionPlan();
         if (floaterMotionPlan)
         {
-            floaterMotionPlan->initialize(
-                -2.3f, 1.0f, -4.7f,
-                0.0f, 0.0f, 45.0f, 0.75f,
-                1.0f, 1.0f, 1.0f, 0.0001f, 0.0001f, 0.0001f, 1.0f,
-                MOTION_PLAN_TYPE_INFINITE, &floaterMotionSegments, nullptr);
+            floaterMotionPlan->initialize(MOTION_PLAN_TYPE_FINITE);
+            std::shared_ptr<MotionSegment> motionStart = floaterMotionPlan->add_segment();
+            if (motionStart)
+            {
+                if (motionStart->initialize())
+                {
+                    motionStart->get_translation()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
+                        -2.3f, 1.0f, -4.7f,
+                        0.0f, 0.0f, 0.0f
+                    );
+                    motionStart->get_rotation()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
+                        0.0f, 0.0f, 45.0f,
+                        0.0f, 0.0f, 0.0f
+                    );
+                    motionStart->get_scaling()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
+                        0.75f, 0.0f, 0.0f,
+                        0.0f, 0.0f, 0.0f
+                    );
+                    motionStart->set_num_frames(1);
+                }
+            }
+            //
+            std::shared_ptr<MotionSegment> motionFloat = floaterMotionPlan->add_segment();
+            if (motionFloat)
+            {
+                if (motionFloat->initialize())
+                {
+                    motionFloat->get_rotation()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_INFINITE, MOTION_CHANGE_CAUSE_INCREMENT,
+                        -1.0f, 1.0f, 0.0f,
+                        0.75f, 0.0f, 0.0f
+                    );
+                    motionFloat->set_num_frames(1);
+                }
+            }
         }
     }
 
@@ -113,11 +184,25 @@ void EntityManager::initialize()
         std::shared_ptr<MotionPlan> planetMotionPlan = planet_entity->getMotionPlan();
         if (planetMotionPlan)
         {
-            planetMotionPlan->initialize(
-                0.0f, -34.0f, 0.0f,
-                0.0f, 0.0f, 0.0f, 9.0f,
-                1.0f, 1.0f, 1.0f, 0.02f, 0.02f, 0.02f, 2.0f,
-                MOTION_PLAN_TYPE_FINITE, nullptr, nullptr);
+            planetMotionPlan->initialize(MOTION_PLAN_TYPE_FINITE);
+            std::shared_ptr<MotionSegment> motionStart = planetMotionPlan->add_segment();
+            if (motionStart)
+            {
+                if (motionStart->initialize())
+                {
+                    motionStart->get_translation()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
+                        0.0f, -34.0f, 0.0f,
+                        0.0f, 0.0f, 0.0f
+                    );
+                    motionStart->get_scaling()->set_change(
+                        MOTION_CHANGE_TEMPORALITY_ONCE, MOTION_CHANGE_CAUSE_ASSIGN,
+                        9.0f, 0.0f, 0.0f,
+                        0.0f, 0.0f, 0.0f
+                    );
+                    motionStart->set_num_frames(1);
+                }
+            }
         }
     }
 }

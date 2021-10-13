@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="Camera/Camera.cpp" />
     <ClCompile Include="Light/DirectionalLight.cpp" />
+    <ClCompile Include="Motion\MotionChange.cpp" />
     <ClCompile Include="Screen/Screen.cpp" />
     <ClCompile Include="Entity/Entity.cpp" />
     <ClCompile Include="Entity/EntityManager.cpp" />
@@ -172,8 +173,6 @@
     <ClCompile Include="Entity/Mesh.cpp" />
     <ClCompile Include="Entity/Model.cpp" />
     <ClCompile Include="Motion/Motion.cpp" />
-    <ClCompile Include="Motion/MotionCurve.cpp" />
-    <ClCompile Include="Motion/MotionCurveFlyer.cpp" />
     <ClCompile Include="Motion/MotionPlan.cpp" />
     <ClCompile Include="Motion/MotionSegment.cpp" />
     <ClCompile Include="Light/PointLight.cpp" />
@@ -195,6 +194,7 @@
     <ClInclude Include="Camera/Camera.h" />
     <ClInclude Include="Common/Constants.h" />
     <ClInclude Include="Light/DirectionalLight.h" />
+    <ClInclude Include="Motion\MotionChange.h" />
     <ClInclude Include="Screen/Screen.h" />
     <ClInclude Include="Entity/Entity.h" />
     <ClInclude Include="Entity/EntityManager.h" />
@@ -205,8 +205,6 @@
     <ClInclude Include="Entity/Mesh.h" />
     <ClInclude Include="Entity/Model.h" />
     <ClInclude Include="Motion/Motion.h" />
-    <ClInclude Include="Motion/MotionCurve.h" />
-    <ClInclude Include="Motion/MotionCurveFlyer.h" />
     <ClInclude Include="Motion/MotionPlan.h" />
     <ClInclude Include="Motion/MotionSegment.h" />
     <ClInclude Include="Light/PointLight.h" />
