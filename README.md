@@ -6,11 +6,9 @@
 
 The scene is derived from [scene #2](https://github.com/TallDave67/flight_sim_3p_02).
 
-The code has been re-organized into appropriate sub-folders as the overall size of the project is growing.
+The code has been re-organized into appropriate sub-folders as the overall size of the project is growing.  The motion classes have also been re-organized and now the specific motion function for any object is set as a lambda function, so no need to have a derived class per object just to provide unique motion.
 
-An x-wing fighter flies along a closed curve and makes smooth turns as it circles a rotating satellite above a spherical (mostly) moon.
-
-And now a transport ship joins him on a perpendicular axis in this game of circling the satellite.
+In the scene an x-wing fighter flies along a closed curve and makes smooth turns as it circles a rotating satellite above a spherical (mostly) moon. And now a transport ship joins him on a perpendicular axis in this game of circling the satellite.
 
 Various lights accentuate the drama of the scene and the vastness of space is now filled with far away stars.
 
