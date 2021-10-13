@@ -10,7 +10,9 @@ The code has been re-organized into appropriate sub-folders as the overall size 
 
 An x-wing fighter flies along a closed curve and makes smooth turns as it circles a rotating satellite above a spherical (mostly) moon.
 
-Various lights accentuate the drama of the scene.
+And now a transport ship joins him on a perpendicular axis in this game of circling the satellite.
+
+Various lights accentuate the drama of the scene and the vastness of space is now filled with far away stars.
 
 This scene repeats indefinitely.  So there is plenty of time to explore it by moving the camera using the following keys:
 
